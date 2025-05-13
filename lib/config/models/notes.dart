@@ -2,23 +2,22 @@ class Notes {
   final int? id;
   final String? title;
   final String? description;
-  final String? date;
+  final DateTime? datetime;
   final String? color;
 
   Notes({
     this.id,
     this.title,
     this.description,
-    this.date,
+    this.datetime,
     this.color,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'title': title,
       'description': description,
-      'date': date,
+      'datetime': datetime?.toIso8601String(),
       'color': color,
     };
   }
@@ -28,7 +27,7 @@ class Notes {
       id: map['id'],
       title: map['title'],
       description: map['description'],
-      date: map['date'],
+      datetime: DateTime.parse(map['datetime']),
       color: map['color'],
     );
   }
